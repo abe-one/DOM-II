@@ -6,6 +6,10 @@ function testEvent(event) {
   console.log(`it works, in theory`);
 }
 
+function stopProp(event) {
+  event.stopPropagation();
+}
+
 function prevDefaultClick(each) {
   each.addEventListener(`click`, function (event) {
     event.preventDefault();
@@ -13,19 +17,31 @@ function prevDefaultClick(each) {
   });
 }
 
+function userAlert(event) {
+  alert("You've triggered an event, the machine was listening..");
+}
+
+function specUserAlert(event) {
+  alert(`You've triggered a secret event, the machine listens anyway.`);
+}
+
 // ^           BUG: returns as many times as there are links ^^
 
 // Variables
 
 let main_nav = document.querySelector(".main-navigation");
-// // console.log(main_nav);
-// let main_nav_links = Array.from(main_nav.links);
+
+let all_links = Array.from(document.links);
 
 let home_div = document.querySelector(".home");
 
+let intro_head = document.querySelector(`.intro`);
+
 // Prevent links
-Array.from(document.links).forEach(prevDefaultClick);
+all_links.forEach(prevDefaultClick);
 
 // Nested similar events
 
-main_nav.addEventListener(`mouseover`, testEvent);
+home_div.addEventListener(`dblclick`, userAlert);
+intro_head.addEventListener(`dblclick`, stopProp);
+intro_head.addEventListener(`dblclick`, specUserAlert);
