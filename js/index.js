@@ -31,14 +31,32 @@ function specUserAlert(event) {
 // }
 
 function changeColor(event) {
-  event.target.style.color = `red`;
+  event.target.style.color = `orange`;
+}
+
+function shrink(event) {
+  event.target.style.maxWidth = `85%`;
+}
+
+function copyrightWarning(even) {
+  alert(
+    `Don't you see that this page is ${
+      document.querySelector(`footer > p`).textContent
+    }`
+  );
+}
+
+function offlineWarning(event) {
+  alert(
+    `You are now offline. Refreshing will wreck everything but the html.index`
+  );
 }
 
 // Drag and Drop
 
 function drag(event) {
   event.dataTransfer.setData(`text`, event.target.src);
-  console.log("is it working drag?");
+  //   console.log("is it working drag?");
 }
 
 function drop(event) {
@@ -77,6 +95,10 @@ let first_content_img = document.querySelector(
 
 document.querySelector(`h2`).addEventListener(`mouseover`, changeColor);
 
+document.addEventListener(`copy`, copyrightWarning);
+
+// document.querySelector()
+
 // Drag and Drop
 
 intro_img.setAttribute(`draggable`, `true`);
@@ -99,4 +121,4 @@ all_links.forEach(prevDefaultClick);
 
 // Debuggery
 
-// all_imgs.forEach((each) => each.addEventListener(`scroll`, fadeTrans));
+all_imgs.forEach((each) => each.addEventListener(`click`, shrink));
