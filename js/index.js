@@ -25,6 +25,17 @@ function specUserAlert(event) {
   alert(`You've triggered a secret event, the machine listens anyway.`);
 }
 
+// function fadeTrans(event) {
+//   event.preventDefault;
+//   event.target.style.transparency = `(100--) / 100`;
+// }
+
+function changeColor(event) {
+  event.target.style.color = `red`;
+}
+
+// Drag and Drop
+
 function drag(event) {
   event.dataTransfer.setData(`text`, event.target.src);
   console.log("is it working drag?");
@@ -62,6 +73,10 @@ let first_content_img = document.querySelector(
   `.content-section > .img-content > img`
 );
 
+// Event listeners
+
+document.querySelector(`h2`).addEventListener(`mouseover`, changeColor);
+
 // Drag and Drop
 
 intro_img.setAttribute(`draggable`, `true`);
@@ -71,7 +86,7 @@ first_content_img.ondrop = drop;
 // first_content_img.addEventListener(`ondrop`, function (event) {
 //   alert(`Secret bus tour!!`);
 // });
-first_content_img.style.border = `10px red solid`;
+// first_content_img.style.border = `10px red solid`;
 
 // Nested similar events
 
@@ -84,4 +99,4 @@ all_links.forEach(prevDefaultClick);
 
 // Debuggery
 
-// all_imgs.forEach((each) => each.addEventListener(`ondrop`, testEvent));
+// all_imgs.forEach((each) => each.addEventListener(`scroll`, fadeTrans));
