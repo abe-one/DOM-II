@@ -121,6 +121,12 @@ Array.from(document.querySelectorAll(`p`)).forEach((each) =>
   each.addEventListener(`wheel`, fontUp)
 );
 
+document.addEventListener("keydown", function (event) {
+  if (event.key === `b`) {
+    alert(`B, bu, bus?`);
+  }
+});
+
 // Drag and Drop
 
 intro_img.setAttribute(`draggable`, `true`);
