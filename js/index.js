@@ -52,6 +52,22 @@ function offlineWarning(event) {
   );
 }
 
+function fontUp(event) {
+  event.target.preventDefault;
+  let y = event.deltaY;
+  let current_size = window
+    .getComputedStyle(event.target)
+    .getPropertyValue(`font-size`);
+  console.log(current_size);
+  if (y < 0) {
+    new_size = parseFloat(current_size) + 5;
+    console.log(current_size);
+  } else if (y > 0) {
+    new_size = parseInt(current_size) - 5;
+  }
+  event.target.style.fontSize = `${new_size}px`;
+}
+
 // Drag and Drop
 
 function drag(event) {
@@ -73,6 +89,10 @@ function allowDrop(event) {
 // ^           BUG: returns as many times as there are links ^^
 
 // Variables
+
+let all_cent = 100;
+
+let one_var = 1;
 
 let all_links = Array.from(document.links);
 
@@ -97,7 +117,9 @@ document.querySelector(`h2`).addEventListener(`mouseover`, changeColor);
 
 document.addEventListener(`copy`, copyrightWarning);
 
-// document.querySelector()
+Array.from(document.querySelectorAll(`p`)).forEach((each) =>
+  each.addEventListener(`wheel`, fontUp)
+);
 
 // Drag and Drop
 
